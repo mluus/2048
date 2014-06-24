@@ -59,6 +59,26 @@ $ ->
   generateTile(@board)
   ppArray(@board)
 
+ getRow = (rowNumber, board) ->
+     board [rowNumber]
+
+ getColumn = (columnNumber, board) ->
+     Column = []
+     for row in [0..3]
+      column.push board[row][columnNumber]
+     column
+
+  getColumnv2 = (c, b) ->
+      b = board
+      [b[0][c], b[1][c], b[2][c], b[3][c]]
+
+  getColumnV3 = (c, b) ->
+      col = []
+      for r in b
+        col.push r[c]
+      col
+
+  # console.log getColumn(3,@board)
 
 
 
