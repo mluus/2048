@@ -32,34 +32,38 @@ $ ->
       [x, y] = getRandomCellIndecies()
         # only if the cell = 0
       if board[x][y] == 0
-          board[x][y] = val
+        board[x][y] = val
       else
-            generateTile(board)
+        generateTile(board)
 
   $('body').keydown (e) =>
-      key = e.which
-      keys = [37..40]
+    key = e.which
+    keys = [37..40]
 
-      if $.inArray(key, keys) > -1
-        e.preventDefault()
+    if $.inArray(key, keys) > -1
+      e.preventDefault()
 
-        switch key
-          when 37
-            console.log 'left'
-            move(@board, 'left')
-          when 38
-            console.log 'up'
-            move(@board, 'up')
-          when 39
-            console.log 'right'
-            move(@board, 'right')
-          when 40
-            console.log 'down'
-            move(@board, 'down')
+      switch key
+        when 37
+          console.log 'left'
+          move(@board, 'left')
+          generateTile(@board)
+        when 38
+          console.log 'up'
+          move(@board, 'up')
+          generateTile(@board)
+        when 39
+          console.log 'right'
+          move(@board, 'right')
+          generateTile(@board)
+        when 40
+          console.log 'down'
+          move(@board, 'down')
+          generateTile(@board)
 
-    generateTile(@board)
-    generateTile(@board)
-    ppArray(@board)
+  generateTile(@board)
+  generateTile(@board)
+  ppArray(@board)
 
   getRow = (rowNumber, board) ->
     board[rowNumber]
@@ -143,7 +147,8 @@ $ ->
           row = mergeCells(row, 'right')
           row = collapseCells(row, 'right')
           setRow(row, i, board)
-          ppArray board
+
+        ppArray board
 
       when 'left'
         for i in [0..3]
@@ -151,7 +156,8 @@ $ ->
           row = mergeCells(row, 'left')
           row = collapseCells(row, 'left')
           setRow(row, i, board)
-          ppArray board
+
+        ppArray board
 
       when 'up'
         for i in [0..3]
@@ -159,7 +165,8 @@ $ ->
           newArray = mergeCells(newArray, 'up')
           newArray = collapseCells(newArray, 'up')
           setColumn(newArray, i, board)
-          ppArray board
+
+        ppArray board
 
       when 'down'
         for i in [3..0]
@@ -167,7 +174,8 @@ $ ->
           newArray = mergeCells(newArray, 'down')
           newArray = collapseCells(newArray, 'down')
           setColumn(newArray, i, board)
-          ppArray board
+
+        ppArray board
 
   ppArray(@board)
 

@@ -60,16 +60,20 @@
           switch (key) {
             case 37:
               console.log('left');
-              return move(_this.board, 'left');
+              move(_this.board, 'left');
+              return generateTile(_this.board);
             case 38:
               console.log('up');
-              return move(_this.board, 'up');
+              move(_this.board, 'up');
+              return generateTile(_this.board);
             case 39:
               console.log('right');
-              return move(_this.board, 'right');
+              move(_this.board, 'right');
+              return generateTile(_this.board);
             case 40:
               console.log('down');
-              return move(_this.board, 'down');
+              move(_this.board, 'down');
+              return generateTile(_this.board);
           }
         }
       };
@@ -167,51 +171,40 @@
       return cells;
     };
     move = function(board, direction) {
-      var i, newArray, row, _i, _j, _k, _l, _results, _results1, _results2, _results3;
+      var i, newArray, row, _i, _j, _k, _l;
       switch (direction) {
         case 'right':
-          _results = [];
           for (i = _i = 3; _i >= 0; i = --_i) {
             row = getRow(i, board);
             row = mergeCells(row, 'right');
             row = collapseCells(row, 'right');
             setRow(row, i, board);
-            _results.push(ppArray(board));
           }
-          return _results;
-          break;
+          return ppArray(board);
         case 'left':
-          _results1 = [];
           for (i = _j = 0; _j <= 3; i = ++_j) {
             row = getRow(i, board);
             row = mergeCells(row, 'left');
             row = collapseCells(row, 'left');
             setRow(row, i, board);
-            _results1.push(ppArray(board));
           }
-          return _results1;
-          break;
+          return ppArray(board);
         case 'up':
-          _results2 = [];
           for (i = _k = 0; _k <= 3; i = ++_k) {
             newArray = getColumn(i, board);
             newArray = mergeCells(newArray, 'up');
             newArray = collapseCells(newArray, 'up');
             setColumn(newArray, i, board);
-            _results2.push(ppArray(board));
           }
-          return _results2;
-          break;
+          return ppArray(board);
         case 'down':
-          _results3 = [];
           for (i = _l = 3; _l >= 0; i = --_l) {
             newArray = getColumn(i, board);
             newArray = mergeCells(newArray, 'down');
             newArray = collapseCells(newArray, 'down');
             setColumn(newArray, i, board);
-            _results3.push(ppArray(board));
           }
-          return _results3;
+          return ppArray(board);
       }
     };
     return ppArray(this.board);
