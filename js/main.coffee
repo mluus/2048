@@ -7,6 +7,22 @@ $ ->
 
   @board = [0..3].map (x) -> [0..3].map (y) -> 0
 
+  arrayEqual = (a, b)->
+    for val, i in a
+      if val != b[i]
+        return false
+    true
+
+  boardEqual = (a, b) ->
+    for row, i in a
+      unless arrayEqual(row, b[i])
+        return false
+    true
+
+  MoveIsValid = (a, b) ->
+    not boardEqual(a,b)
+
+
   randomIndex = (x) ->
     Math.floor(Math.random() * 4)
 
@@ -36,34 +52,7 @@ $ ->
       else
         generateTile(board)
 
-  $('body').keydown (e) =>
-    key = e.which
-    keys = [37..40]
 
-    if $.inArray(key, keys) > -1
-      e.preventDefault()
-
-      switch key
-        when 37
-          console.log 'left'
-          move(@board, 'left')
-          generateTile(@board)
-        when 38
-          console.log 'up'
-          move(@board, 'up')
-          generateTile(@board)
-        when 39
-          console.log 'right'
-          move(@board, 'right')
-          generateTile(@board)
-        when 40
-          console.log 'down'
-          move(@board, 'down')
-          generateTile(@board)
-
-  generateTile(@board)
-  generateTile(@board)
-  ppArray(@board)
 
   getRow = (rowNumber, board) ->
     board[rowNumber]
@@ -112,7 +101,7 @@ $ ->
     switch direction
       when "right", "down"
         for y in [0...3]
-          for x in [y + 1..3]
+          for x in [y+1..3]
             if cells[x] == cells[y]
               cells[x] = cells[x] * 2
               cells[y] = 0
@@ -120,10 +109,10 @@ $ ->
             else if cells[x] == 0
               break
             else if cells[y] != 0
-             break
+              break
       when "left", "up"
         for y in [3...0]
-          for x in [y + 3..1]
+          for x in [y-1..0]
             if cells[x] == cells[y]
               cells[x] = cells[x] * 2
               cells[y] = 0
@@ -135,8 +124,17 @@ $ ->
     cells
 
 
-  # console.log "hi" + collapseCells( mergeCells([2, 2, 0, 8], "right"), "right")
-      # console.log "hi" + collapseCells([2, 2, 0, 0], "right")
+
+  showBoard = (board) ->
+    for x in [0..3]
+      for y in [0..3]
+
+        if (board[x][y]) !=0
+          $(".r#{x}.c#{y} > div").html(board[x][y])
+        else
+          $(".r#{x}.c#{y} > div").html('')
+
+
 
   move = (board, direction) ->
 
@@ -175,9 +173,47 @@ $ ->
           newArray = collapseCells(newArray, 'down')
           setColumn(newArray, i, board)
 
-        ppArray board
+    generateTile(board)
+    showBoard(board)
 
+  $('body').keydown (e) =>
+    key = e.which
+    keys = [37..40]
+
+    if $.inArray(key, keys) > -1
+      e.preventDefault()
+
+    switch key
+      when 37
+        console.log 'left'
+        move(@board, 'left')
+        generateTile(@board)
+      when 38
+        console.log 'up'
+        move(@board, 'up')
+        generateTile(@board)
+      when 39
+        console.log 'right'
+        move(@board, 'right')
+        generateTile(@board)
+      when 40
+        console.log 'down'
+        move(@board, 'down')
+        generateTile(@board)
+
+  noValidMove = (board) ->
+    for x in [0..3]
+      for y in [0..3]
+        if board[x][y]
+          console.log board
+
+
+  generateTile(@board)
+  generateTile(@board)
+  showBoard(@board)
   ppArray(@board)
+
+
 
 
 
