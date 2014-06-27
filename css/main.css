@@ -14,8 +14,43 @@ body {
   text-align: center;
   font-weight: bold;
   font-family: "Clear Sans" ;
-  font-color: #1b7885;
+  color: #FFFFFF;
+
 }
+
+
+ .colorChange2 {
+  background-color: #f99834;
+ }
+
+ .colorChange4 {
+  background-color: #de872e;
+ }
+
+ .colorChange8 {
+  background-color: #c07528;
+ }
+
+ .colorChange16 {
+  background-color: #9a5e20;
+ }
+
+ .colorChange32 {
+  background-color: #754718;
+ }
+
+ .colorChange64 {
+  background-color: #563412;
+ }
+
+ .colorChange128 {
+  background-color: #34200b;
+ }
+
+ .colorChange256 {
+  background-color: #0a0602;
+ }
+
 
 .board{
   border-radius: 5px;
@@ -25,7 +60,7 @@ body {
   margin: 0 auto;
   border-radius: 5px;
   padding: 8px;
-
+  box-shadow: 8px 8px 5px 0px rgba(52, 50, 50, 0.75);
 }
 
 .cell {
@@ -34,5 +69,18 @@ body {
   height: 100px;
   float: left;
   margin: 7px 7px;
-  border-radius: 3px;
+  border-radius: 4px;
+  font-size: 3em;
+  box-shadow: 8px 8px 5px 0px rgba(52, 50, 50, 0.75);
 }
+
+.game-explanation{
+   font-size: 2em;
+   text-align: center;
+   padding: 80px
+
+}
+
+
+
+
