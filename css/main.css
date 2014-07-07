@@ -10,46 +10,44 @@ h1 {
 }
 
 body {
-  background-color: #c6c7cb ;
+  background-color: #c6c7cb;
   text-align: center;
   font-weight: bold;
-  font-family: "Clear Sans" ;
+  font-family: "Clear Sans";
   color: #FFFFFF;
-
 }
 
-
- .colorChange2 {
+.colorChange2 {
   background-color: #f99834;
- }
+}
 
- .colorChange4 {
+.colorChange4 {
   background-color: #de872e;
- }
+}
 
- .colorChange8 {
+.colorChange8 {
   background-color: #c07528;
- }
+}
 
- .colorChange16 {
+.colorChange16 {
   background-color: #9a5e20;
- }
+}
 
- .colorChange32 {
+.colorChange32 {
   background-color: #754718;
- }
+}
 
- .colorChange64 {
+.colorChange64 {
   background-color: #563412;
- }
+}
 
- .colorChange128 {
+.colorChange128 {
   background-color: #34200b;
- }
+}
 
- .colorChange256 {
+.colorChange256 {
   background-color: #0a0602;
- }
+}
 
 
 .board{
@@ -74,13 +72,8 @@ body {
   box-shadow: 8px 8px 5px 0px rgba(52, 50, 50, 0.75);
 }
 
-.game-explanation{
-   font-size: 2em;
-   text-align: center;
-   padding: 80px
-
+.game-explanation {
+  font-size: 2em;
+  text-align: center;
+  padding: 80px;
 }
-
-
-
-
